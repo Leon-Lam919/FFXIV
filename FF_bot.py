@@ -1,4 +1,9 @@
-# this program will parse through the game FF14 and find fate spawns using real time data
+import asyncio
+import logging
 
+import aiohttp
+import pyxivapi
+from pyxivapi.models import Filter, Sort
 
-print("Hello world")
+async def fetch_example_results():
+    
