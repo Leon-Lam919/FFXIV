@@ -11,23 +11,25 @@ async def ex():
 
     # Search Lodestone for a character
     character = await client.character_search(
-        world="odin", 
-        forename="lethys", 
+        world="odin",
+        forename="lethys",
         surname="lightpaw"
     )
 
     # Get a character by Lodestone ID with extended data & include their Free Company information, if it has been synced.
     character = await client.character_by_id(
-        lodestone_id=8255311, 
+        lodestone_id=8255311,
         extended=True,
         include_freecompany=True
     )
 
     # Search Lodestone for a free company
     freecompany = await client.freecompany_search(
-        world="gilgamesh", 
+        world="gilgamesh",
         name="Elysium"
     )
+
+    #world do thing
 
     # Item search with paging
     item = await client.index_search(
@@ -44,24 +46,24 @@ async def ex():
 
     # Fuzzy search XIVAPI game data for a recipe by name. Results will be in English.
     recipe = await client.index_search(
-        name="Crimson Cider", 
-        indexes=["Recipe"], 
+        name="Crimson Cider",
+        indexes=["Recipe"],
         columns=["ID", "Name", "Icon", "ItemResult.Description"]
     )
 
     # Fuzzy search XIVAPI game data for a recipe by name. Results will be in French.
     recipe = await client.index_search(
-        name="Cidre carmin", 
-        indexes=["Recipe"], 
-        columns=["ID", "Name", "Icon", "ItemResult.Description"], 
+        name="Cidre carmin",
+        indexes=["Recipe"],
+        columns=["ID", "Name", "Icon", "ItemResult.Description"],
         language="fr"
     )
 
     # Get an item by its ID (Omega Rod) and return the data in German
     item = await client.index_by_id(
-        index="Item", 
-        content_id=23575, 
-        columns=["ID", "Name", "Icon", "ItemUICategory.Name"], 
+        index="Item",
+        content_id=23575,
+        columns=["ID", "Name", "Icon", "ItemUICategory.Name"],
         language="de"
     )
 
@@ -71,9 +73,9 @@ async def ex():
 
     # Get non-npc actions matching a given term (Defiance)
     action = await client.index_search(
-        name="Defiance", 
-        indexes=["Action", "PvPAction", "CraftAction"], 
-        columns=["ID", "Name", "Icon", "Description", "ClassJobCategory.Name", "ClassJobLevel", "ActionCategory.Name"], 
+        name="Defiance",
+        indexes=["Action", "PvPAction", "CraftAction"],
+        columns=["ID", "Name", "Icon", "Description", "ClassJobCategory.Name", "ClassJobLevel", "ActionCategory.Name"],
         filters=filters,
         string_algo="match"
     )
@@ -92,8 +94,8 @@ async def ex():
     sort = Sort("LevelItem", True)
 
     item = await client.index_search(
-        name="Omega Rod", 
-        indexes=["Item"], 
+        name="Omega Rod",
+        indexes=["Item"],
         columns=["ID", "Name", "Icon", "Description", "LevelItem"],
         filters=filters,
         sort=sort,
